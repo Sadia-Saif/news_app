@@ -1,6 +1,7 @@
 class StaticAssets {
   //     <<-------------- General titles-------------->>
   static const String tFollow = "Follow";
+  static const String tTrending = "Trending";
 
   //     <<-------------- NavBar titles-------------->>
   static const String tHome = "Home";
@@ -38,7 +39,7 @@ class StaticAssets {
 
   // Headings
   static const String tNewsHeadline =
-      "Ukrain Conflict: Kyiv brace for a Russian assualt ";
+      "Ukrain Conflict: Kyiv brace for a \nRussian assualt ";
 
   // Comments Row
   static const String tWorld = "World";
