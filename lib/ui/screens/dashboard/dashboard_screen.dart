@@ -36,7 +36,10 @@ class _DashboardState extends State<Dashboard> {
         child: views[currentIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Fixed
+        backgroundColor: AppColors.background,
         currentIndex: currentIndex,
+        showUnselectedLabels: true,
         selectedItemColor: AppColors.primary,
         selectedIconTheme: const IconThemeData(
             color: AppColors.primary, opacity: 1.0, size: 30.0),

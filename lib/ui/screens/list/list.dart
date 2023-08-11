@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/config/theme/colors.dart';
-import 'package:news_app/widgets/core/_screen.dart';
 
 part 'widgets/_body.dart';
 
