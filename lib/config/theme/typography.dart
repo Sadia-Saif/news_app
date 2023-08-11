@@ -28,10 +28,18 @@ class AppText {
     fontWeight: FontWeight.w700,
   );
   static const b2 = TextStyle(
+    fontSize: 23.0,
+    fontWeight: FontWeight.w700,
+  );
+  static const b3 = TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.w700,
+  );
+  static const b4 = TextStyle(
     fontSize: 15.0,
     fontWeight: FontWeight.w600,
   );
-  static const b3 = TextStyle(
+  static const b5 = TextStyle(
       fontSize: 10.0, fontWeight: FontWeight.w600, color: AppColors.black);
 
   static const s1 = TextStyle(
