@@ -53,11 +53,11 @@ class StaticAssets {
   static const String tDesign = "Design";
   static const String tCrypto = "Crypto";
   static const String tGaming = "Gaming";
-  static const String tTechnoology = "Technology";
+  static const String tTechnology = "Technology";
 
   //Details List
   // >>Tech
-  static const String tTechHeadings =
+  static const String tTechHeading1 =
       "Why you can't have legs in virtual reality (yet)";
 
   // >>Design
@@ -67,7 +67,8 @@ class StaticAssets {
       "8 Best websites to help you practice UX ";
   // Business
   static const String tBusinessHeadings =
-      "Why you can't have legs in virtual reality (yet)";
+      "Best Strategies for boosting the business in 2023";
+
   // >>Crypto
   static const String tCoinGape = "Coin Gape";
   static const String tCryptoHeadings =
@@ -80,8 +81,14 @@ class StaticAssets {
       "Why you can't have legs in virtual reality (yet)";
 
   // images
-  static const String logo = 'assets/images/logo.png';
+  static const String tech = 'assets/images/tech.jpeg';
   static const String card = 'assets/images/place.png';
+  static const String virtualReality = 'assets/images/vr.jpeg';
+  static const String vr = 'assets/images/virtual.jpeg';
+  static const String cryptoBull = 'assets/images/crypto.jpeg';
+  static const String visualDesign = 'assets/images/designer.png';
+  static const String startup = 'assets/images/startup.jpeg';
+  static const String business = 'assets/images/business.jpeg';
 
   StaticAssets(String imagePath);
 }
