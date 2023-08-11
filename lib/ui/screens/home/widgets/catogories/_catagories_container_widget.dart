@@ -22,7 +22,7 @@ class CatagoriesContainer extends StatelessWidget {
       onTap: () {},
       child: Container(
         height: 52,
-        width: 100,
+        width: 110,
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
           color: AppColors.shadow,
