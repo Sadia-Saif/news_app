@@ -1,19 +1,26 @@
 class Article {
-  final String title;
-  final String description;
-  final String? urlToImage;
+  late String? author;
+  late String title;
+  late String description;
+  late String url;
+  late String urlToImage;
+  late String content;
 
   Article({
+    this.author,
     required this.title,
     required this.description,
-    this.urlToImage,
+    required this.url,
+    required this.urlToImage,
+    required this.content,
   });
 
-  factory Article.fromJson(Map<String, dynamic> json) {
-    return Article(
-      title: json['title'],
-      description: json['description'],
-      urlToImage: json['urlToImage'],
-    );
+  Article.fromJson(Map<String, dynamic> json) {
+    author = json['author'];
+    title = json['title'];
+    description = json['description'];
+    url = json['url'];
+    urlToImage = json['urlToImage'];
+    content = json['content'];
   }
 }

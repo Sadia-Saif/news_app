@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of '../list.dart';
 
 class _Body extends StatefulWidget {
@@ -9,58 +8,63 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  final NewsApi newsApi = NewsApi();
-  late Future<List<Article>> futureArticles;
+  List<Article> articles = [];
+  bool _isLoading = false;
 
   @override
   void initState() {
+    getData();
     super.initState();
-    futureArticles = newsApi.getTopHeadlines();
+  }
+
+  getData() async {
+    setState(() {
+      _isLoading = true;
+    });
+    articles = await ApiServices().getBussinessArticles();
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: FutureBuilder<List<Article>>(
-        future: futureArticles,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return const Center(child: Text('Error loading data'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No articles available'));
-          } else {
-            return SafeArea(
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : SafeArea(
               child: RefreshIndicator(
                 onRefresh: () async {
                   setState(() {
-                    futureArticles = newsApi.getTopHeadlines();
+                    ApiServices().getArticles();
                   });
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(25),
                   child: ListView.builder(
-                    itemCount: snapshot.data!.length,
+                    shrinkWrap: true,
+                    itemCount: articles.length,
                     itemBuilder: (context, index) {
-                      final article = snapshot.data![index];
                       return Card(
                         color: AppColors.background,
                         child: NewsTile(
-                          title: article.title,
-                          desc: article.description,
-                          imgUrl: article.urlToImage,
+                          title: articles[index].title,
+                          desc: articles[index].description,
+                          imgUrl: articles[index].urlToImage,
+                          url: articles[index].url,
                         ),
                       );
                     },
                   ),
                 ),
               ),
-            );
-          }
-        },
-      ),
+            ),
+      //     }
+      //   },
+      // ),
     );
   }
 }

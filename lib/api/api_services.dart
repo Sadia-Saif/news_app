@@ -1,24 +1,134 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:news_app/constants/constants.dart';
 import 'package:news_app/models/articles.dart';
 
-class NewsApi {
-  final String apiKey = '27836cfc6f964eed93483f67f196e786';
-  final String baseUrl = 'https://newsapi.org/v2';
+class ApiServices {
+  var client = http.Client();
 
-  Future<List<Article>> getTopHeadlines() async {
-    final response = await http
-        .get(Uri.parse('$baseUrl/top-headlines?country=us&apiKey=$apiKey'));
-
+  Future<List<Article>> getArticles() async {
+    List<Article> articles = [];
+    var uri = Uri.parse(topNewsUrl);
+    var response = await client.get(uri);
+    var jsonData = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
-      final List<dynamic> articlesData = responseData['articles'];
-
-      return articlesData
-          .map((articleData) => Article.fromJson(articleData))
-          .toList();
+      jsonData['articles'].forEach((json) {
+        if (json['url'] != null &&
+            json['urlToImage'] != null &&
+            json['description'] != null &&
+            json['content'] != null) {
+          Article article = Article.fromJson(json);
+          articles.add(article);
+        }
+      });
+      return articles;
     } else {
-      throw Exception('Failed to load top headlines');
+      throw Exception('Failed to load post');
+    }
+  }
+
+  Future<List<Article>> getBussinessArticles() async {
+    List<Article> articles = [];
+    var uri = Uri.parse(bussinessUrl);
+    var response = await client.get(uri);
+    var jsonData = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      jsonData['articles'].forEach((json) {
+        if (json['url'] != null &&
+            json['urlToImage'] != null &&
+            json['description'] != null &&
+            json['content'] != null) {
+          Article article = Article.fromJson(json);
+          articles.add(article);
+        }
+      });
+      return articles;
+    } else {
+      throw Exception('Failed to load post');
+    }
+  }
+
+  Future<List<Article>> getEntertainmentArticles() async {
+    List<Article> articles = [];
+    var uri = Uri.parse(entertainmentUrl);
+    var response = await client.get(uri);
+    var jsonData = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      jsonData['articles'].forEach((json) {
+        if (json['url'] != null &&
+            json['urlToImage'] != null &&
+            json['description'] != null &&
+            json['content'] != null) {
+          Article article = Article.fromJson(json);
+          articles.add(article);
+        }
+      });
+      return articles;
+    } else {
+      throw Exception('Failed to load post');
+    }
+  }
+
+  Future<List<Article>> getSportsArticles() async {
+    List<Article> articles = [];
+    var uri = Uri.parse(sportsUrl);
+    var response = await client.get(uri);
+    var jsonData = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      jsonData['articles'].forEach((json) {
+        if (json['url'] != null &&
+            json['urlToImage'] != null &&
+            json['description'] != null &&
+            json['content'] != null) {
+          Article article = Article.fromJson(json);
+          articles.add(article);
+        }
+      });
+      return articles;
+    } else {
+      throw Exception('Failed to load post');
+    }
+  }
+
+  Future<List<Article>> getScienceArticles() async {
+    List<Article> articles = [];
+    var uri = Uri.parse(scienceUrl);
+    var response = await client.get(uri);
+    var jsonData = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      jsonData['articles'].forEach((json) {
+        if (json['url'] != null &&
+            json['urlToImage'] != null &&
+            json['description'] != null &&
+            json['content'] != null) {
+          Article article = Article.fromJson(json);
+          articles.add(article);
+        }
+      });
+      return articles;
+    } else {
+      throw Exception('Failed to load post');
+    }
+  }
+
+  Future<List<Article>> getTechnologyArticles() async {
+    List<Article> articles = [];
+    var uri = Uri.parse(technologyUrl);
+    var response = await client.get(uri);
+    var jsonData = jsonDecode(response.body);
+    if (response.statusCode == 200) {
+      jsonData['articles'].forEach((json) {
+        if (json['url'] != null &&
+            json['urlToImage'] != null &&
+            json['description'] != null &&
+            json['content'] != null) {
+          Article article = Article.fromJson(json);
+          articles.add(article);
+        }
+      });
+      return articles;
+    } else {
+      throw Exception('Failed to load post');
     }
   }
 }
