@@ -45,7 +45,7 @@ class NewsTile extends StatelessWidget {
             ),
             Text(
               title,
-              // maxLines: 2,
+              
               style: const TextStyle(
                   color: AppColors.white,
                   fontSize: 20,
@@ -56,7 +56,7 @@ class NewsTile extends StatelessWidget {
             ),
             Text(
               desc,
-              // maxLines: 2,
+              
               style: const TextStyle(color: AppColors.white, fontSize: 14),
             )
           ],
